@@ -36,6 +36,7 @@ program-interfaces = { path = "../program-interfaces" }
 jupiter-aggregator-v6 = { path = "../jupiter-aggregator-v6" }
 jupiter-aggregator-common = { path = "../jupiter-aggregator-common" }
 jupiter-common = { workspace = true }
+xd-jupiter = { path = "../xd-jupiter" }
 
 # SPL
 spl-token = { workspace = true, features = ["no-entrypoint"] }

@@ -1,0 +1,16 @@
+[package]
+name = "xd-jupiter"
+version = "0.1.0"
+edition = { workspace = true }
+description = "Jupiter AMM interface implementations for XD Launchpad and XDSwap"
+license = "Apache-2.0"
+
+[dependencies]
+jupiter-amm-interface = { workspace = true }
+solana-sdk = { workspace = true }
+anyhow = { workspace = true }
+rust_decimal = "1.36"
+sha2 = "0.10"
+spl-token = { workspace = true, features = ["no-entrypoint"] }
+spl-token-2022 = { workspace = true, features = ["no-entrypoint"] }
+spl-associated-token-account = { workspace = true, features = ["no-entrypoint"] }

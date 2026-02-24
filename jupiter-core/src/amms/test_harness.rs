@@ -74,6 +74,16 @@ pub static SPL_TOKEN_MINT_TO_IN_AMOUNT: LazyLock<HashMap<Pubkey, u64>> = LazyLoc
             pubkey!("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB"),
             1_110_000_000,
         ),
+        // VOKRAT launchpad token
+        (
+            pubkey!("AcotYXm9NpY2XZHV6kSV6kSFL5ZTSvK3f9eRXvxRr1XD"),
+            1_000_000_000,
+        ),
+        // XDSwap base token
+        (
+            pubkey!("12HcXvaaUBduvQ4o6k3J8arUXejEoquQFUY2bas8tsXD"),
+            1_000_000_000,
+        ),
     ])
 });
 

@@ -5,6 +5,7 @@ use std::collections::HashMap;
 use std::sync::LazyLock;
 
 use crate::amms::spl_token_swap_amm::SplTokenSwapAmm;
+use xd_jupiter::{LaunchpadAmm, XDSwapAmm};
 
 type AmmFromKeyedAccount =
     Box<dyn Fn(&KeyedAccount, &AmmContext) -> Result<Box<dyn Amm + Send + Sync>> + Send + Sync>;
@@ -30,6 +31,8 @@ pub static PROGRAM_ID_TO_AMM_LABEL_WITH_AMM_FROM_KEYED_ACCOUNT: LazyLock<
     let mut m = HashMap::new();
 
     m.extend(create_entries_for_amm::<SplTokenSwapAmm>());
+    m.extend(create_entries_for_amm::<LaunchpadAmm>());
+    m.extend(create_entries_for_amm::<XDSwapAmm>());
     m
 });
 
@@ -41,3 +44,19 @@ pub static PROGRAM_ID_TO_LABEL: LazyLock<HashMap<String, String>> = LazyLock::ne
     );
     program_id_to_label
 });
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use xd_jupiter::{LAUNCHPAD_PROGRAM_ID, XDSWAP_PROGRAM_ID};
+
+    #[test]
+    fn registers_xd_program_ids() {
+        assert!(
+            PROGRAM_ID_TO_AMM_LABEL_WITH_AMM_FROM_KEYED_ACCOUNT.contains_key(&LAUNCHPAD_PROGRAM_ID)
+        );
+        assert!(
+            PROGRAM_ID_TO_AMM_LABEL_WITH_AMM_FROM_KEYED_ACCOUNT.contains_key(&XDSWAP_PROGRAM_ID)
+        );
+    }
+}
